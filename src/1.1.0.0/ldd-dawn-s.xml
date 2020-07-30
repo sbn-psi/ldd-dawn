@@ -2018,11 +2018,27 @@ wavelength and spectral channels.</definition>
 		<submitter_name>GRaND Instrument</submitter_name>
 		<definition>Remarks about the containing object.</definition>
 		<DD_Value_Domain>
-			<enumeration_flag>false</enumeration_flag>
+			<enumeration_flag>true</enumeration_flag>
 			<value_data_type>ASCII_Short_String_Collapsed</value_data_type>
 			<DD_Permissible_Value>
 				<value>SEP</value>
 				<value_meaning>Solar Energetic Particles</value_meaning>
+			</DD_Permissible_Value>
+			<DD_Permissible_Value>
+				<value>Solar Flare</value>
+				<value_meaning>Solar Flare</value_meaning>
+			</DD_Permissible_Value>
+			<DD_Permissible_Value>
+				<value>Gamma-ray Burst</value>
+				<value_meaning>Gamma-ray Burst</value_meaning>
+			</DD_Permissible_Value>
+			<DD_Permissible_Value>
+				<value>Electron Burst</value>
+				<value_meaning>Electron Burst</value_meaning>
+			</DD_Permissible_Value>
+			<DD_Permissible_Value>
+				<value>Data Glitch</value>
+				<value_meaning>Data Glitch</value_meaning>
 			</DD_Permissible_Value>
 		</DD_Value_Domain>
 	</DD_Attribute>
