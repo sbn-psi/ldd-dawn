@@ -2006,10 +2006,50 @@ wavelength and spectral channels.</definition>
 		<definition>Remarks about the containing object.</definition>
 		<DD_Value_Domain>
 			<enumeration_flag>false</enumeration_flag>
-			<value_data_type>ASCII_String</value_data_type>
+			<value_data_type>ASCII_Text_Preserved</value_data_type>
 		</DD_Value_Domain>
 	</DD_Attribute>
 
+	<DD_Attribute>
+		<name>condition_type</name>
+		<version_id>1.0</version_id>
+		<local_identifier>dawn.condition_type</local_identifier>
+		<nillable_flag>true</nillable_flag>
+		<submitter_name>GRaND Instrument</submitter_name>
+		<definition>Remarks about the containing object.</definition>
+		<DD_Value_Domain>
+			<enumeration_flag>false</enumeration_flag>
+			<value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+			<DD_Permissible_Value>
+				<value>SEP</value>
+				<value_meaning>Solar Energetic Particles</value_meaning>
+			</DD_Permissible_Value>
+		</DD_Value_Domain>
+	</DD_Attribute>
+	<DD_Attribute>
+		<name>indicator</name>
+		<version_id>1.0</version_id>
+		<local_identifier>dawn.indicator</local_identifier>
+		<nillable_flag>true</nillable_flag>
+		<submitter_name>GRaND Instrument</submitter_name>
+		<definition>Remarks about the containing object.</definition>
+		<DD_Value_Domain>
+			<enumeration_flag>false</enumeration_flag>
+			<value_data_type>ASCII_Boolean</value_data_type>
+		</DD_Value_Domain>
+	</DD_Attribute>
+	<DD_Attribute>
+		<name>identifier</name>
+		<version_id>1.0</version_id>
+		<local_identifier>dawn.identifier</local_identifier>
+		<nillable_flag>true</nillable_flag>
+		<submitter_name>GRaND Instrument</submitter_name>
+		<definition>Remarks about the containing object.</definition>
+		<DD_Value_Domain>
+			<enumeration_flag>false</enumeration_flag>
+			<value_data_type>ASCII_Short_String_Collapsed</value_data_type>
+		</DD_Value_Domain>
+	</DD_Attribute>
 
 	<DD_Class>
 		<name>TELREADOUT</name>
@@ -2127,6 +2167,59 @@ wavelength and spectral channels.</definition>
 		</DD_Association>
 	  </DD_Class>
 		
+	<DD_Class>
+		<name>Conditions</name>
+		<version_id>1.0</version_id>
+		<local_identifier>dawn.Conditions</local_identifier>
+		<submitter_name>GRaND Instrument</submitter_name>
+		<definition>some text</definition>
+		<DD_Association>	
+			<identifier_reference>dawn.condition_type</identifier_reference>
+			<reference_type>attribute_of</reference_type>
+			<minimum_occurrences>1</minimum_occurrences>
+			<maximum_occurrences>1</maximum_occurrences>
+		</DD_Association>
+		<DD_Association>
+			<identifier_reference>dawn.Condition</identifier_reference>
+			<reference_type>component_of</reference_type>
+			<minimum_occurrences>1</minimum_occurrences>
+			<maximum_occurrences>unbounded</maximum_occurrences>
+		</DD_Association>
+	</DD_Class>
+
+	<DD_Class>
+		<name>Condition</name>
+		<version_id>1.0</version_id>
+		<local_identifier>dawn.Condition</local_identifier>
+		<submitter_name>GRaND Instrument</submitter_name>
+		<definition>some text</definition>
+		<DD_Association>	
+			<identifier_reference>XSChoice#</identifier_reference>
+			<identifier_reference>dawn.indicator</identifier_reference>
+			<identifier_reference>dawn.identifier</identifier_reference>
+			<reference_type>attribute_of</reference_type>
+			<minimum_occurrences>1</minimum_occurrences>
+			<maximum_occurrences>1</maximum_occurrences>
+		</DD_Association>
+		<DD_Association>	
+			<identifier_reference>dawn.comment</identifier_reference>
+			<reference_type>attribute_of</reference_type>
+			<minimum_occurrences>1</minimum_occurrences>
+			<maximum_occurrences>1</maximum_occurrences>
+		</DD_Association>
+		<DD_Association>	
+			<identifier_reference>dawn.grand_start_sclk</identifier_reference>
+			<reference_type>attribute_of</reference_type>
+			<minimum_occurrences>1</minimum_occurrences>
+			<maximum_occurrences>1</maximum_occurrences>
+		</DD_Association>
+		<DD_Association>	
+			<identifier_reference>dawn.grand_stop_sclk</identifier_reference>
+			<reference_type>attribute_of</reference_type>
+			<minimum_occurrences>1</minimum_occurrences>
+			<maximum_occurrences>1</maximum_occurrences>
+		</DD_Association>
+	</DD_Class>
 	
 	<!-- Framing Camera (FC) Class -->
 	<DD_Class>
@@ -2592,9 +2685,13 @@ wavelength and spectral channels.</definition>
 		  <minimum_occurrences>1</minimum_occurrences>
 		  <maximum_occurrences>1</maximum_occurrences>
 		</DD_Association>
-	  </DD_Class>
-
-
+		<DD_Association>
+			<identifier_reference>dawn.Conditions</identifier_reference>
+			<reference_type>component_of</reference_type>
+			<minimum_occurrences>0</minimum_occurrences>
+			<maximum_occurrences>*</maximum_occurrences>
+		  </DD_Association>
+		</DD_Class>
 	<DD_Class>
 		<name>Dawn</name>
 		<version_id>1.0</version_id>
